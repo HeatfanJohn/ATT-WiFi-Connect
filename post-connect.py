@@ -1,9 +1,13 @@
 #!/usr/bin/python
+import socket
 from bs4 import BeautifulSoup
 import mechanize
 import urllib2
 
-# Thank you Professor Odersky and Functional Programming Principles in Scala!
+# Thank you Professor Odersky and Functional Programming Principles in Scala
+# for teaching me about higher-order functions as the function `select_form` returns
+# the function `make_select_form`.
+#
 def select_form(action):
     def make_select_form(form):
         return form.attrs.get('action', None) == action
@@ -11,6 +15,9 @@ def select_form(action):
 
 ua = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36'
 url = 'http://masseria.org'
+
+# set a timeout of 30 seconds in `socket` which will eventually be used by `urllib2`
+socket.setdefaulttimeout(30.0)
 
 br = mechanize.Browser()
 br.addheaders = [('User-Agent', ua)]
