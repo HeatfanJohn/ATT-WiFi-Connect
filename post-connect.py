@@ -22,6 +22,7 @@ socket.setdefaulttimeout(30.0)
 br = mechanize.Browser()
 br.addheaders = [('User-Agent', ua)]
 br.set_handle_robots(False)
+br.set_handle_refresh(False)
 br.set_debug_http(True)
 br.set_debug_responses(True)
 br.open(url)
