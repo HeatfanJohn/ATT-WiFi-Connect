@@ -2,7 +2,7 @@
 # Get directory of this script into DIR
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CORRECT="https://masseria.org/"
-URL=`curl -s http://masseria.org -w"%{redirect_url}"`
+URL=`curl -o /dev/null -s http://masseria.org -w"%{redirect_url}"`
 
 if [ "$URL" = "$CORRECT" ]; then
     echo "Internet OK"
